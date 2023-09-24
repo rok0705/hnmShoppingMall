@@ -10,7 +10,7 @@ const ProductDetailPage = () => {
   let { id } = useParams();
 
   const fetchProductInfo = async () => {
-    let url = `http://localhost:3001/products/${id}`;
+    let url = `https://my-json-server.typicode.com/rok0705/hnmShoppingMall/products/${id}`;
     let response = await fetch(url);
     let data = await response.json();
 
