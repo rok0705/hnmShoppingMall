@@ -1,22 +1,23 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
+import { productAction } from "./../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.productList);
   const [query, useQuery] = useSearchParams();
+  const dispatch = useDispatch();
 
   const getProducts = async () => {
     let searchQuery = query.get("q") || "";
     console.log("searchquery:", searchQuery);
     // let url = `http://localhost:3001/products?q=${searchQuery}`;
-    let url = `https://my-json-server.typicode.com/rok0705/hnmShoppingMall/products?q=${searchQuery}`;
-    let response = await fetch(url);
-    let data = await response.json();
 
-    setProductList(data);
+    // redux doesn't support async. do this in thunk middleware.
+    dispatch(productAction.getProducts(searchQuery));
   };
 
   useEffect(() => {
