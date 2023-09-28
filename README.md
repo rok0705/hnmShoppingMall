@@ -1,6 +1,6 @@
 
 
-portfolio project. Used Javascript, React, React bootstrap, fake JSON server for .json file database.
+Used Javascript, React, React bootstrap, fake JSON server for .json file database.
 
 deploy URL : https://hnm-react-router.vercel.app/
 
