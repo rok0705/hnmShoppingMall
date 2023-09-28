@@ -8,6 +8,7 @@
 .nav-logo {
   display: flex;
   justify-content: center;
+  cursor: pointer
 }
 
 .nav-menu {
@@ -70,3 +71,4 @@
   padding-top: 20px;
   width: 200px
 }
+
