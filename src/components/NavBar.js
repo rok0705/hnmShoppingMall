@@ -2,9 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = ({ loginStatus, setLoginStatus }) => {
   const navigate = useNavigate();
+  const IsLogin = useSelector((state) => state.auth.authenticate);
 
   const goToLoginPage = () => {
     if (loginStatus) {
@@ -43,7 +45,7 @@ const NavBar = ({ loginStatus, setLoginStatus }) => {
       <div>
         <div className="login-button" onClick={goToLoginPage}>
           <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
-          <div>{loginStatus ? "Logout" : "Login"}</div>
+          <div>{IsLogin ? "Logout" : "Login"}</div>
         </div>
       </div>
       <div className="nav-logo" onClick={goToHomePage}>

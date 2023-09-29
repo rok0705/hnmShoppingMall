@@ -7,13 +7,12 @@ import { productAction } from "./../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductAll = () => {
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.product.productList);
   const [query, useQuery] = useSearchParams();
   const dispatch = useDispatch();
 
   const getProducts = async () => {
     let searchQuery = query.get("q") || "";
-    console.log("searchquery:", searchQuery);
     // let url = `http://localhost:3001/products?q=${searchQuery}`;
 
     // redux doesn't support async. do this in thunk middleware.
