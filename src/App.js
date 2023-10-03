@@ -43,10 +43,7 @@ function App() {
           path="/login"
           element={<LoginPage setLogin={setLoginStatus} />}
         ></Route>
-        <Route
-          path="/products/:id"
-          element={<PrivateRoute loginStatus={loginStatus} />}
-        ></Route>
+        <Route path="/products/:id" element={<PrivateRoute />}></Route>
       </Routes>
     </div>
   );

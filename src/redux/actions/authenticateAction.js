@@ -5,4 +5,10 @@ function login(id, password) {
   };
 }
 
-export const authenticateAction = { login };
+function logout() {
+  return (dispatch, getState) => {
+    dispatch({ type: "LOGOUT_SUCCESS", payload: null });
+  };
+}
+
+export const authenticateAction = { login, logout };

@@ -1,21 +1,20 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Button, Dropdown } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { productAction } from "./../redux/actions/productAction";
 
 const ProductDetailPage = () => {
-  const [product, setProduct] = useState(null);
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.product.selectedItem);
 
   let { id } = useParams();
 
   const fetchProductInfo = async () => {
-    let url = `https://my-json-server.typicode.com/rok0705/hnmShoppingMall/products/${id}`;
-    let response = await fetch(url);
-    let data = await response.json();
-
-    console.log(data);
-    setProduct(data);
+    console.log("id:", id);
+    dispatch(productAction.getProductDetail(id));
   };
 
   useEffect(() => {
@@ -39,9 +38,10 @@ const ProductDetailPage = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                {product?.size.map((size) => (
-                  <Dropdown.Item>{size}</Dropdown.Item>
-                ))}
+                {product &&
+                  product.size.map((idx) => (
+                    <Dropdown.Item key={idx}>{idx}</Dropdown.Item>
+                  ))}
               </Dropdown.Menu>
             </Dropdown>
           </div>

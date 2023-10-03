@@ -2,15 +2,17 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavBar = ({ loginStatus, setLoginStatus }) => {
   const navigate = useNavigate();
   const IsLogin = useSelector((state) => state.auth.authenticate);
+  const dispatch = useDispatch();
 
   const goToLoginPage = () => {
-    if (loginStatus) {
-      setLoginStatus(false);
+    if (IsLogin) {
+      //setLoginStatus(false);
+      dispatch({ type: "LOGOUT_SUCCESS", payload: null });
     } else {
       navigate("/login");
     }
