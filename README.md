@@ -1,6 +1,6 @@
 
 
-Used Javascript, React, React bootstrap, fake JSON server for .json file database.
+Javascript, React.js, Redux(+Redux thunk/middleware), React bootstrap, fake JSON server.
 
 deploy URL : https://hnm-react-router.vercel.app/
 
