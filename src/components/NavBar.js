@@ -77,4 +77,5 @@ const NavBar = ({ loginStatus, setLoginStatus }) => {
   );
 };
 
+
 export default NavBar;
